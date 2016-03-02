@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="oDiv">xxx</div>
+    <script type="text/javascript">
+    // var Demo = (function(){
+    //     var dirc = {};
+    //     function bind(eType, func){
+    //         if(typeof eType == "string" && typeof func == "function"){
+    //             if(typeof dirc[eType] != "undefined"){
+    //                 dirc[eType].push(func);
+    //             }else{
+    //                 dirc[eType] = [func];
+    //             }
+    //         }else{
+    //             alert("bind传参有误");
+    //         }
+    //         console.log(dirc);
+    //     }
+
+    //     function delegate(eType){
+    //         if(typeof dirc[eType] != "undefined"){
+    //             for(var i=0; i < dirc[eType].length; i++){
+    //                 dirc[eType][i]();
+    //             }
+    //         }
+    //     }
+
+    //     function unbind(eType){
+    //         if(typeof dirc[eType] != "undefined"){
+    //             delete dirc[eType];
+    //         }
+    //     }
+
+    //     return {
+    //         bind : bind,
+    //         delegate: delegate,
+    //         unbind : unbind
+    //     }
+    // }());
+
+    // Demo.bind("hello",function(){alert("hello")});
+    // Demo.bind("hello",function(){alert("bbb")});
+    // Demo.delegate("hello");
+    // Demo.unbind("hello");
+    // Demo.delegate("hello");
+
+
+
+
+
+    // function getFunctionName(fun) {
+    //         return fun.name;
+    // }
+    // alert(getFunctionName(function a(){alert("x"); }));
+
+
+
+
+    // if (!Function.prototype.bind) {
+    //     Function.prototype.bind = function(oThis) {
+    //         if (typeof this !== "function") {
+    //             // closest thing possible to the ECMAScript 5
+    //             // internal IsCallable function
+    //             throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+    //         }
+
+    //         var aArgs = Array.prototype.slice.call(arguments, 1),
+    //             fToBind = this,
+    //             fNOP = function() {},
+    //             fBound = function() {
+    //                 return fToBind.apply(this instanceof fNOP ? this : oThis || this,
+    //                     aArgs.concat(Array.prototype.slice.call(arguments)));
+    //             };
+
+
+    //         fNOP.prototype = this.prototype;
+    //         fBound.prototype = new fNOP();
+
+    //         return fBound;
+    //     };
+    // }
+
+    // var quickSort = function(arr) {
+    //     if (arr.length < 2) {
+    //         return arr;
+    //     }
+    //     var key = arr[parseInt((arr.length-1)/2)],
+    //         leftPart = [],
+    //         middlePart = [],
+    //         rightPart = [];
+    //         console.log(key);
+    //     for (var i = 0; i < arr.length; i++) {
+    //         if (arr[i] < key) {
+    //             leftPart.push(arr[i]);
+    //         }
+    //         if (arr[i] > key){
+    //             rightPart.push(arr[i]);
+    //         }
+    //     };
+    //     return quickSort(leftPart).concat([key],quickSort(rightPart));
+
+    // }
+    // var c={};
+    // c.a=[1,2,3];
+    // var b=c.a;
+    // delete c.a;
+    // alert(c.a);
+    // alert(b);
+
+
+    // console.log(a);
+    // var a=5;
+    // function a(){}
+
+
+    // function Foo() {
+    //     getName = function() {
+    //         alert(1);
+    //     };
+    //     return this;
+    // }
+    // Foo.getName = function() {
+    //     alert(2);
+    // };
+    // Foo.prototype.getName = function() {
+    //     alert(3);
+    // };
+    // var getName = function() {
+    //     alert(4);
+    // };
+
+    // function getName() {
+    //     alert(5);
+    // }
+
+
+
+    // //请写出以下输出结果：
+    // Foo.getName(); //2
+    // getName(); //4
+    // Foo().getName(); //1
+    // getName(); //1
+    // new Foo.getName(); //2
+    // new Foo().getName(); //3
+    // new new Foo().getName(); //3
+
+
+    // bubbleSort([1,5,8,6,4,5,6,2,1,1,]);
+    // function bubbleSort(arr){
+    //     var result = arr,
+    //         len = result.length;
+    //     for(var i=0; i < len; i++){
+    //         for(var j=0; j < len-1-i; j++){
+    //             if(result[j]>result[j+1]){
+    //                 var temp = result[j];
+    //                 result[j] = result[j+1];
+    //                 result[j+1] = temp;
+    //             }
+    //         }
+    //     }
+    //     console.log(result);
+    // }
+
+
+    // function sort(arr){
+    //     return quickSort2(arr,0,arr.length-1);
+    //     function quickSort2(arr,l,r){            
+    //         if(l<r){         
+    //             var mid=arr[parseInt((l+r)/2)],i=l-1,j=r+1;         
+    //             while(true){
+    //                 while(arr[++i]<mid);
+    //                 while(arr[--j]>mid);             
+    //                 if(i>=j)break;
+    //                 var temp=arr[i];
+    //                 arr[i]=arr[j];
+    //                 arr[j]=temp;
+    //             }       
+    //             quickSort2(arr,l,i-1);
+    //             quickSort2(arr,j+1,r);
+    //         }
+    //         return arr;
+    //     }
+    // }
+
+    // var quickSort = function(arr) {
+    //     if (arr.length < 2) {
+    //         return arr;
+    //     }
+    //     var key = arr[0],
+    //         leftPart = [],
+    //         rightPart = [];
+    //     for (var i = 0; i < arr.length; i++) {
+    //         if (arr[i] < key) {
+    //             leftPart.push(arr[i]);
+    //         }
+    //         if (arr[i] > key){
+    //             rightPart.push(arr[i]);
+    //         }
+    //         //不去重的话可以在此增加判断,等于key的push到middle数组,最后拼接进去。
+    //     };
+    //     return quickSort(leftPart).concat([key],quickSort(rightPart));
+    // }
+    // var sb = [];
+    // for(var i=0 ; i<1000; i++){
+    //     sb[i]=parseInt(Math.random()*10000);
+    // }
+    // console.time("quickSort");
+    //     quickSort(sb);
+    // console.timeEnd("quickSort");
+    // console.time("sort");
+    //     sort(sb);
+    // console.timeEnd("sort");
+
+    var reg = /\w+/g;
+
+    </script>
+</body>
+
+</html>
