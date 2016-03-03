@@ -482,4 +482,6 @@ var throttleV2 = function(fn, delay, mustRunDelay){
 | ,                                  | 多重求值                                     |
 
 
-## CSS3 选择器
+## CSS 选择器
+着重注意CSS3的伪类
+[链接](http://www.w3school.com.cn/cssref/css_selectors.asp)
