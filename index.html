@@ -218,10 +218,19 @@
     //     sort(sb);
     // console.timeEnd("sort");
 
-    var obj={
-        " ":0
-    };
-    alert(obj[" "]);
+
+    // 不创建新变量,交换a和b的值。
+    
+    var getUrlPara = function(a){
+        var arr = window.location.search.substring(1).split("&"),
+            result = {};
+        for(var i=0; i < arr.length; i++){
+            result[arr[i].split("=")[0]] = arr[i].split("=")[1];
+        }
+        return result;
+    }
+
+    getUrlPara();
 
     </script>
 </body>

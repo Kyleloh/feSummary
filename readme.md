@@ -1,7 +1,3 @@
-[TOC]
-
----
-
 ## 手写事件模型及事件代理/委托
 1. 捕获(低版本IE不支持捕获阶段)
 2. 目标
@@ -86,7 +82,7 @@ Demo.trigger("hello");
 - CSS靠前/JS靠后
 - DOM操作放在一起
 - lazyload
-- 提高js的复用程度
+- 提高js的性能
 
 
 ## 闭包原理及应用
@@ -403,3 +399,57 @@ a里面添加iframe,设置src为b页面.b页面里面修改window.name,也就是
     toString() – 把数组转换为字符串，并返回结果。
     toLocaleString() – 把数组转换为本地数组，并返回结果。
     valueOf() – 返回数组对象的原始值
+
+### 字符串和数组操作应用
+```javascript
+//获取url参数
+var getUrlPara = function(){
+    var arr = window.location.search.substring(1).split("&"),
+        result = {};
+    for(var i=0; i < arr.length; i++){
+        result[arr[i].split("=")[0]] = arr[i].split("=")[1];
+    }
+    return result;
+}
+```
+
+## 设计模式
+(这一块得回家看笔记...)
+
+## 函数节流
+通过setTimeout和clearTimeout对于频繁执行的函数进行延时处理。<br>
+例如: onresize, onscroll 还有drag之类的。(为避免由于频率过高导致一直都不执行，可以设置一个必然触发执行的时间间隔)
+```javascript
+var throttle = function(fn, delay){
+    var timer = null;
+    return function(){
+        var context = this, args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function(){
+            fn.apply(context, args);
+        }, delay);
+    };
+ };
+
+
+var throttleV2 = function(fn, delay, mustRunDelay){
+    var timer = null;
+    var t_start;
+    return function(){
+        var context = this, args = arguments, t_curr = +new Date();
+        clearTimeout(timer);
+        if(!t_start){
+            t_start = t_curr;
+        }
+        if(t_curr - t_start >= mustRunDelay){
+            fn.apply(context, args);
+            t_start = t_curr;
+        }
+        else {
+            timer = setTimeout(function(){
+                fn.apply(context, args);
+            }, delay);
+        }
+    };
+ };
+```
