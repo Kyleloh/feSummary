@@ -1,23 +1,26 @@
-##前端总结
+[TOC]
 
-### 手写事件模型及事件代理/委托
+---
+
+## 手写事件模型及事件代理/委托
 1. 捕获(低版本IE不支持捕获阶段)
 2. 目标
 3. 冒泡
 
-#### 绑定事件的方法:
+
+### 绑定事件的方法:
 `target.addEventListener(eType, listener, useCapture);`<br>
 useCapture一般为false。为true时在捕获阶段触发。
 
 `target.attachEvent(eType, listener); `(仅IE8及以下版本浏览器)
 
 
-#### 事件委托
+### 事件委托
 > 可以大量节省内存占用，减少事件注册
 
 > 可以实现当新增子对象时无需再次对其绑定事件，对于动态内容部分尤为合适
 
-##### 原生JS事件委托
+#### 原生JS事件委托
 关键代码
 ```javascript
 obj.onclick = function(e){
@@ -27,7 +30,8 @@ obj.onclick = function(e){
 }
 ```
 
-#### 实现事件模型
+
+### 实现事件模型
 即写一个类或是一个模块，有两个函数，一个bind一个trigger，分别实现绑定事件和触发事件，核心需求就是可以对某一个事件名称绑定多个事件响应函数，然后触发这个事件名称时，依次按绑定顺序触发相应的响应函数。
 ```javascript
 var Demo = (function(){
@@ -73,9 +77,8 @@ Demo.unbind("hello");
 Demo.trigger("hello");
 ```
 
----
 
-### 前端性能优化
+## 前端性能优化
 - CDN
 - 压缩静态文件
     - CSS Sprite
@@ -85,9 +88,8 @@ Demo.trigger("hello");
 - lazyload
 - 提高js的复用程度
 
----
 
-### 闭包原理及应用
+## 闭包原理及应用
 ```javascript
 function fun(n,o) {
   console.log(o)
@@ -103,9 +105,8 @@ var c = fun(0).fun(1);  c.fun(2);  c.fun(3);    //undefined / ? / ? / ?
 ```
 [链接](http://www.cnblogs.com/xxcanghai/p/4991870.html)
 
----
 
-### 手写Function.bind函数
+## 手写Function.bind函数
 ```javascript
 if (!Function.prototype.bind) {
     Function.prototype.bind = function(oThis) {
@@ -131,11 +132,10 @@ if (!Function.prototype.bind) {
 }
 ```
 
----
 
-### 排序算法
+## 排序算法
 
-#### 快速排序(去重)
+### 快速排序(去重)
 ```javascript
 //第一种:
 //找到一个基准值，左边找到大于基准值，右边找到小于基准值的同时，左右换位。继续遍历。
@@ -181,7 +181,8 @@ var quickSort = function(arr) {
 }
 ```
 
-#### 冒泡排序
+
+### 冒泡排序
 ```javascript
 function bubbleSort(arr){
     var result = arr,
@@ -200,7 +201,8 @@ function bubbleSort(arr){
 }
 ```
 
-#### 去重
+
+### 去重
 ```javascript
 function unique(arr){
     var result=[],
@@ -217,9 +219,8 @@ function unique(arr){
 }
 ```
 
----
 
-### JS的定义提升
+## JS的定义提升
 ```javascript
 function Foo() {
     getName = function() {
@@ -252,9 +253,8 @@ new new Foo().getName();
 ```
 [链接](http://www.cnblogs.com/xxcanghai/p/5189353.html)
 
----
 
-### 跨域问题
+## 跨域问题
 
 [JavaScript跨域总结与解决办法](http://www.cnblogs.com/rainman/archive/2011/02/20/1959325.html)
 
@@ -262,7 +262,7 @@ new new Foo().getName();
 
 [跨域资源共享的10种方式](http://www.cnblogs.com/cat3/archive/2011/06/15/2081559.html)
 
-#### 1、document.domain+iframe的设置
+### 1、document.domain+iframe的设置
 对于主域相同而子域不同的例子，试用该方法。
 
 xxx.a.com上的a.html
@@ -290,14 +290,14 @@ document.domain = 'a.com';
 1、安全性，当一个站点（b.a.com）被攻击后，另一个站点（c.a.com）会引起安全漏洞。<br>
 2、如果一个页面中引入多个iframe，要想能够操作所有iframe，必须都得设置相同domain。
 
-#### 2、JSONP
+### 2、JSONP
 思路
 
 动态创建script标签,src带参数请求其它地址。<br>
 返回后进行操作。<br>
 最后要销毁。
 
-#### 3、利用iframe和location.hash
+### 3、利用iframe和location.hash
     a.html和c.html同域
     b.html不同域
     实现a.html与b.html通信
@@ -305,7 +305,7 @@ document.domain = 'a.com';
     a.html > b.html > c.html
 
 
-#### HTML5 postMessage
+### HTML5 postMessage
 ```javascript
 //a.html
 <iframe id="ifr" src="b.com/index.html"></iframe>
@@ -331,16 +331,16 @@ window.onload = function() {
 </script>
 ```
 
-#### window.name跨域
+
+### window.name跨域
 a,b,c三个页面. a,c同域, b不同域<br>
 a里面添加iframe,设置src为b页面.b页面里面修改window.name,也就是iframe里面的window.name, <br>
 第一次onload时,将iframe里的src改成c的地址.此时c跟a同域,可以传递window.name.
 
-#### document.domain+iframe的设置 (用于主域相同，子域不同的情况)
+### document.domain+iframe的设置 (用于主域相同，子域不同的情况)
 
----
 
-### 正则表达式
+## 正则表达式
 方法
 ```javascript
     var reg = /\w+/g;
@@ -368,10 +368,38 @@ a里面添加iframe,设置src为b页面.b页面里面修改window.name,也就是
     'o{0,1}' 等价于 'o?'。请注意在逗号和两个数之间不能有空格。
 ```
 
----
 
-### 字符串操作
+## 字符串操作
 
----
+    concat() – 将两个或多个字符的文本组合起来，返回一个新的字符串。 
+    indexOf() – 返回字符串中一个子串第一处出现的索引。如果没有匹配项，返回 -1 。 
+    charAt() – 返回指定位置的字符。 
+    lastIndexOf() – 返回字符串中一个子串最后一处出现的索引，如果没有匹配项，返回 -1 。 
+    match() – 检查一个字符串是否匹配一个正则表达式。 
+    substring() – 返回字符串的一个子串。传入参数是起始位置和结束位置。 
+    substr() – 返回字符串的一个子串。传入参数是起始位置和字符串长度。(不建议使用) 
+    replace() – 用来查找匹配一个正则表达式的字符串，然后使用新字符串代替匹配的字符串。 
+    search() – 执行一个正则表达式匹配查找。如果查找成功，返回字符串中匹配的索引值。否则返回 -1 。 
+    slice() – 提取字符串的一部分，并返回一个新字符串。 
+    split() – 通过将字符串划分成子串，将一个字符串做成一个字符串数组。 
+    length – 返回字符串的长度，所谓字符串的长度是指其包含的字符的个数。 
+    toLowerCase() – 将整个字符串转成小写字母。 
+    toUpperCase() – 将整个字符串转成大写字母。
 
-### 数组操作
+
+## 数组操作
+
+    concat() – 连接两个或更多的数组，并返回结果。
+    join() – 把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。
+    pop() – 删除并返回数组的最后一个元素
+    push() – 向数组的末尾添加一个或更多元素，并返回新的长度。
+    reverse() – 颠倒数组中元素的顺序。
+    shift() – 删除并返回数组的第一个元素
+    unshift() – 向数组的开头添加一个或更多元素，并返回新的长度。
+    slice() – 从某个已有的数组返回选定的元素
+    sort() – 对数组的元素进行排序
+    splice() – 删除元素，并向数组添加新元素。
+    toSource() – 返回该对象的源代码。
+    toString() – 把数组转换为字符串，并返回结果。
+    toLocaleString() – 把数组转换为本地数组，并返回结果。
+    valueOf() – 返回数组对象的原始值
