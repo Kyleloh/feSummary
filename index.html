@@ -7,7 +7,19 @@
 </head>
 
 <body>
-    <div id="oDiv">xxx</div>
+<style>
+    p:only-child{color: red;}
+</style>
+    <div>
+        <p>1</p>
+
+    </div>
+    <div id="oDiv">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+
+    </div>
     <script type="text/javascript">
     // var Demo = (function(){
     //     var dirc = {};
@@ -220,18 +232,52 @@
 
 
     // 不创建新变量,交换a和b的值。
+
+    // var getUrlPara = function(a){
+    //     var arr = window.location.search.substring(1).split("&"),
+    //         result = {};
+    //     for(var i=0; i < arr.length; i++){
+    //         result[arr[i].split("=")[0]] = arr[i].split("=")[1];
+    //     }
+    //     return result;
+    // }
+
+    // getUrlPara();
+
+    // function repeat(func, times, wait){
+    //     return function(word){
+    //         var counts = 0;
+    //         var timer = setInterval(function(){
+    //             if(counts<times){
+    //                 func(word);
+    //                 counts++;
+    //             }else{
+    //                 clearInterval(timer);
+    //             }
+    //         },wait);
+    //     };
+    // }
+
+    // var repeatedFun = repeat(alert, 2, 2000);
+    // repeatedFun("hello world");
     
-    var getUrlPara = function(a){
-        var arr = window.location.search.substring(1).split("&"),
-            result = {};
-        for(var i=0; i < arr.length; i++){
-            result[arr[i].split("=")[0]] = arr[i].split("=")[1];
+
+
+    function stringconcat(a,b){
+        return a+"+"+b;
+    }
+    stringconcat.prefix = function(c){
+        return function(a,b){
+            console.log(stringconcat(a,b));
+            return stringconcat(c,stringconcat(a,b));
         }
-        return result;
     }
 
-    getUrlPara();
-
+    var result1 = stringconcat("a", "b");
+    console.log("result1: "+result1);
+    var stringconcatWithPrefix = stringconcat.prefix("hellworld");
+    var result2 = stringconcatWithPrefix("a", "b");
+    console.log("result2: "+result2);
     </script>
 </body>
 

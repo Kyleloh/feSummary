@@ -1,3 +1,5 @@
+# 前端碎片知识总结
+
 ## 手写事件模型及事件代理/委托
 1. 捕获(低版本IE不支持捕获阶段)
 2. 目标
@@ -385,7 +387,6 @@ a里面添加iframe,设置src为b页面.b页面里面修改window.name,也就是
 | toLowerCase() | 将整个字符串转成小写字母。                                                         |
 | toUpperCase() | 将整个字符串转成大写字母。                                                         |
 
----
 
 ### 数组操作
 | 方法       | 描述                                                          |
@@ -404,7 +405,6 @@ a里面添加iframe,设置src为b页面.b页面里面修改window.name,也就是
 | toString() | 把数组转换为字符串，并返回结果。                              |
 | valueOf()  | 返回数组对象的原始值                                          |
 
----
 
 ### 字符串和数组操作应用
 ```javascript
@@ -482,6 +482,14 @@ var throttleV2 = function(fn, delay, mustRunDelay){
 | ,                                  | 多重求值                                     |
 
 
-## CSS 选择器
+## CSS 
+
+### CSS选择器
 着重注意CSS3的伪类
 [链接](http://www.w3school.com.cn/cssref/css_selectors.asp)
+
+### CSS垂直居中
+`top:50%; margin-top:-with/2;`
+
+`flexbox`
+
