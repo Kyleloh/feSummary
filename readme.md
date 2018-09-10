@@ -157,26 +157,6 @@ function sort(arr){
     }
 }
 
-//第二种:
-//遍历数组, 小的放基准值左边,大的放右边,递归
-var quickSort = function(arr) {
-    if (arr.length < 2) {
-        return arr;
-    }
-    var key = arr[0],
-        leftPart = [],
-        rightPart = [];
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] < key) {
-            leftPart.push(arr[i]);
-        }
-        if (arr[i] > key){
-            rightPart.push(arr[i]);
-        }
-        //不去重的话可以在此增加判断,等于key的push到middle数组,最后拼接进去。
-    };
-    return quickSort(leftPart).concat([key],quickSort(rightPart));
-}
 ```
 
 
